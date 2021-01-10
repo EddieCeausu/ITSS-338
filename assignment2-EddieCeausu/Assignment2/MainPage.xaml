@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment2.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to STALLHALL" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <!--Button 1 Show Time-->
+        <Label Text="Click the button below to see the current time" HorizontalTextAlignment="Center" FontSize="20" Padding="20"/>
+        <Label x:Name="showTime" HorizontalTextAlignment="Center" FontSize="20" />
+        <Button x:Name="button1" Text="Click Me" Clicked="onClick1" HorizontalOptions="Center" />
+        <!--Button 2 Roll the Dice-->
+        <Label Text="Click the button below to roll a Dice!" HorizontalTextAlignment="Center" FontSize="20" Padding="20"/>
+        <Label x:Name="rollDie" HorizontalTextAlignment="Center" FontSize="20" Text="{Binding MyDate, StringFormat='Today is {0:MMMM d, yyyy HH:mm}'}"/>
+        <Button x:Name="button2" Text="Click Me" Clicked="onClick2" HorizontalOptions="Center" />
+         <!--Button 3 Random Text This does not work!!!
+        <Label x:Name="randomText" HorizontalTextAlignment="Center" FontSize="20" />
+        <Button x:Name="button3" Text="Just Click this Button" Clicked="onClick3" HorizontalOptions="Center" />-->
+        
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+
+</ContentPage>

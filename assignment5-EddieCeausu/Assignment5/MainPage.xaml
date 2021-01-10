@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment5.MainPage">
+    <ContentPage.Resources>
+        
+        <Style TargetType="Label" x:Key="stdLabel" >
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="HorizontalOptions" Value="Start" />
+            <Setter Property="FontSize" Value="Caption" />
+        </Style>
+        <Style TargetType="FlexLayout" x:Key="flex">
+            <Setter Property="Direction" Value="Row" />
+            <Setter Property="AlignItems" Value="Start" />
+            <!-- <Setter Property="JustifyContent" Value="SpaceEvenly" /> -->
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView VerticalScrollBarVisibility="Always">
+        <StackLayout BackgroundColor="White" HorizontalOptions="FillAndExpand" >
+            <Frame BackgroundColor="#FFFFF" Padding="15" CornerRadius="0">
+                <Label Text="Investment Calculator" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20"/>
+            </Frame>
+            <!-- Intial Investment Entry -->
+            <FlexLayout Style="{StaticResource flex}">
+                <Label Style="{StaticResource stdLabel}" Text="Initial Investment: " />
+                <Entry x:Name="initInvest" Keyboard="Numeric" ScaleX="2.5" TextChanged="initInvest_TextChanged" FontSize="Small"/>
+            </FlexLayout>
+            <!-- Monthly Investment -->
+            <FlexLayout Style="{StaticResource flex}">
+                <Label Style="{StaticResource stdLabel}" Text="Monthly Investment: "/>
+                <Label Margin="0, 20, 0, 0" BindingContext="{x:Reference slider1}" Text="{Binding Value, StringFormat='{0:C2}' }"/>
+            </FlexLayout>
+            <!-- Monthly Investment Slider -->
+            <Slider x:Name="slider1" ValueChanged="slider1_ValueChanged" WidthRequest="100" Minimum="0" Maximum="1000" ThumbColor="Black" MinimumTrackColor="Black" Margin="10"/>
+            <!-- Total Years -->
+            <FlexLayout Style="{StaticResource flex}">
+                <Label Style="{StaticResource stdLabel}" Text="Number of Years: " />
+                <Label x:Name="Year_Increment" Margin="0, 20, 0, 0" FontSize="Caption" BindingContext="{x:Reference stepper}" Text="{Binding Value}" />
+                <Stepper ValueChanged="stepper_ValueChanged" Scale="0.7" x:Name="stepper" Minimum="0" Maximum="100" Increment="1" Margin="10"/>
+            </FlexLayout>
+            <!-- Compound Interval Picker-->
+            <FlexLayout Style="{StaticResource flex}" >
+            <Label Style="{StaticResource stdLabel}" Text="Compound Interval: " />
+                <Picker x:Name="cInterval" SelectedIndexChanged="cInterval_SelectedIndexChanged" >
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Daily</x:String>
+                            <x:String>Monthly</x:String>
+                            <x:String>Yearly</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </FlexLayout>
+            <!-- Interest Rate -->
+            <FlexLayout Style="{StaticResource flex}">
+                <Label Style="{StaticResource stdLabel}" Text="Interest Rate: " />
+                <Label Style="{StaticResource stdLabel}" BindingContext="{x:Reference slider2}" Text="{Binding Value}" />
+            </FlexLayout>
+            <!-- Interest Rate Slider -->
+            <Slider x:Name="slider2" ValueChanged="slider2_ValueChanged" WidthRequest="100" Minimum="0" Maximum="10" ThumbColor="Black" MinimumTrackColor="Black" Margin="10"/>
+            <!-- Calculate Button -->
+            <Button Padding="10" Margin="10" Text="Calculate" HorizontalOptions="Center" x:Name="Calculate" Clicked="Calculate_Clicked"/>
+            <!-- Total Toggle -->
+            <FlexLayout Direction="Row" AlignItems="Center" JustifyContent="SpaceEvenly">
+                <Label Style="{StaticResource stdLabel}" Text="Display Total " />
+                <Switch x:Name="switch" Toggled="Switch_Toggled"/>
+            </FlexLayout>
+            <!-- Total -->
+            <Label x:Name="totalLabel" Style="{StaticResource stdLabel}" Text="Total: " HorizontalOptions="Center" FontSize="Title" IsVisible="false"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

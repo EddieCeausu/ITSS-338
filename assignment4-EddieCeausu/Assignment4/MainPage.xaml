@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment4.MainPage">
+    <ContentPage.Resources>
+        <Color x:Key="offWhite">#faf9f9</Color>
+        <Color x:Key="text">#555b6e</Color>
+        <Color x:Key="error">Red</Color>
+        <Style TargetType="Frame" x:Key="stdFrame">
+            <Setter Property="Padding" Value="24" />
+            <Setter Property="CornerRadius" Value="0" />
+            
+        </Style>
+        <Style TargetType="Label" x:Key="formLabel">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontSize" Value="Body" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+        </Style>
+
+    </ContentPage.Resources>
+    
+    
+    <StackLayout BackgroundColor="{StaticResource offWhite}">
+        <Frame BackgroundColor="#89b0ae" Style="{StaticResource stdFrame}">
+            <Label FontSize="Title" Text="Tip Calculator" HorizontalTextAlignment="Center" />
+        </Frame>
+        <StackLayout BackgroundColor="#ffd6ba" Padding="10" Margin="10">
+            <Label x:Name="billLabel" TextColor="{StaticResource text}" Text="Bill" Style="{StaticResource formLabel}" />
+            <Entry x:Name="Bill" TextChanged="Bill_TextChanged" TextColor="{StaticResource text}" />
+            <Label x:Name="tipLabel" TextColor="{StaticResource text}" Text="Tip" Style="{StaticResource formLabel}" />
+            <Entry  x:Name="Tip" TextChanged="Tip_TextChanged" TextColor="{StaticResource text}" />
+        </StackLayout>
+        <Frame BackgroundColor="#bee3db" Margin="10" Padding="10">
+            <Label x:Name="result" TextColor="{StaticResource text}" Text="Total: " HorizontalTextAlignment="Center" FontSize="Subtitle" Style="{StaticResource formLabel}"/>
+        </Frame>
+        <Button Clicked="Button_Clicked" TextColor="{StaticResource text}" Text="Calculate" BackgroundColor="#89b0ae" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>
